@@ -29,14 +29,14 @@ export default class Sideslide extends Component
   constructor(props){
       super(props);
       this.state = {
-         amenities: 'hospital'
+         currentState: 'hospital'
       };
   }
 
   _onpress(a){
     console.log('onpress');
      this.setState({
-       amenities : a
+       currentState : a,
      }, this.props.itemSelected(a));
   }
 
@@ -73,10 +73,10 @@ export default class Sideslide extends Component
           size ={35}
           borderRadius={0}
           onPress={this._onpress.bind(this, item.amenities)}
-          iconStyle = {this.styler(item.label)}
-          backgroundColor={this.bg(item.label)}>
-        <Text style= {this.styler(item.label)}>
-        <Text style={{fontSize:25}}>
+          iconStyle = {this.styler(item.amenities)}
+          backgroundColor={this.bg(item.amenities)}>
+        <Text style= {this.styler(item.amenities)}>
+        <Text style={{fontSize:30, fontFamily:'Signika-Bold'}}>
         {item.label}
         </Text>
         </Text>

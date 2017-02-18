@@ -8,6 +8,7 @@ import {
 
 import CloseButton from './close_button';
 import styles from '../styles/styles';
+import EditButton from './edit_button';
 
 var FeatureDetails = React.createClass({
   render: function(){
@@ -18,15 +19,22 @@ var FeatureDetails = React.createClass({
       visible={this.props.visible}
       onRequestClose={this.props.onClose} >
       <View style={styles.header}>
-        <Text style={styles.header1}>PREPARE</Text>
-        <Text style = {styles.header2}>POKHARA</Text>
-        <CloseButton onPress={this.props.onClose} />
+
+       <Text style={styles.header1}> 
+          <Text style={styles.header1}>PREPARE</Text>
+          <Text style = {styles.header2}>POKHARA</Text>
+       </Text>
+
+       <View style = {styles.detail_close}>
+          <CloseButton onPress={this.props.onClose} />
+       </View>
+        
       </View>
       <View style={styles.content}>
         {this.displayData()}
       </View>
       <View style={styles.footer}>
-
+        <EditButton/>
       </View>
     </ Modal>
     </View>
@@ -34,15 +42,17 @@ var FeatureDetails = React.createClass({
   displayData: function(){
     //fetch view accoring to type here, this is just a place holder
     return <View>
-    <Text>
-    {this.getData('name')}
-    </Text>
-    <Text>
-    {this.getData('nepaliName')}
-    </Text>
-    <Text>
-    {this.getData('emergency')}
-    </Text>
+      <Text style={styles.detail_title}>
+        {this.getData('name')}
+      </Text>
+
+      <Text style={styles.detail_content}>
+        {this.getData('nepaliName')}
+      </Text>
+        
+      <Text style={styles.detail_content}>
+        {this.getData('emergency')}
+      </Text>
     </View>
   },
   getData: function(key){
