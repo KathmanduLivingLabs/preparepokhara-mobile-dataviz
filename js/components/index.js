@@ -18,12 +18,13 @@ import Loading from './loading';
 import FetchData from '../api/fetch_data';
 import Insight_main from './insight';
 
-import MapView from './map';
+import MapView from './map'
+import Filters from './filter.js'
 
 var PreparePokhara = React.createClass({
 
   getInitialState: function(){
-    
+
     return {
       isLoading: true,
       amenity: 'hospital',
@@ -34,13 +35,8 @@ var PreparePokhara = React.createClass({
       attributes: [],
       stats:{},
       insightVisible: false,
+      filtersVisible: false
     }
-  },
-  componentWillMount: function(){
-
-  },
-  componentWillUpdate: function(){
-    //this.updateMarkers();
   },
   render: function(){
      var navigationView = <SideMenu itemSelected={this.drawerItemSelected}/>;
@@ -53,21 +49,22 @@ var PreparePokhara = React.createClass({
       <View style={styles.container}>
          <Insight_main visible={this.state.insightVisible} onInshightsClosed={this.onInshightsClosed} amenity={this.state.amenity} insightstats={this.state.stats}/>
         <View style={styles.header}>
+        <Filters visible={this.state.filtersVisible}
+          onFilterApplied={this.applyFilter}
+          onFilterClose={this.onFilterClose}
+          amenity={this.state.amenity}/>
           <NavigationButton onPress={this.openDrawer}/>
           <Text style={styles.header1}>PREPARE</Text>
           <Text style={styles.header2}>POKHARA</Text>
           </View>
         <View style={styles.headermargin}><Text style={styles.header3}>{this.amenitytag()}</Text></View>
-
         <View style={styles.content}>
-          {this.state.isLoading ? this.renderLoading() : this.renderMapComponent()} 
+          {this.state.isLoading ? this.renderLoading() : this.renderMapComponent()}
          <View style={styles.footer}>
-          <FilterButton />  
-          {this.state.isLoading ? <InsightsButton/> : <InsightsButton onPress={this.inshightButtonPressed}/>} 
+          <FilterButton onPress={this.filterButtonPressed}/>
+          {this.state.isLoading ? <InsightsButton/> : <InsightsButton onPress={this.inshightButtonPressed}/>}
         </View>
         </View>
-       
-
       </View>
       </DrawerLayoutAndroid>
   },
@@ -81,24 +78,34 @@ var PreparePokhara = React.createClass({
       break;
       default: return null;
     }
-
   },
-
   onInshightsClosed: function(){
     this.setState({
-      
         insightVisible: false
-      
     });
-
   },
   inshightButtonPressed: function(){
     this.setState({
-      
-        insightVisible: true    
-      
+        insightVisible: true
     });
-
+  },
+  filterButtonPressed: function(){
+    console.log('Filter Pressed');
+    this.setState({
+      filtersVisible: true
+    });
+  },
+  onFilterClose: function(){
+    this.setState({
+      filtersVisible: false
+    });
+  },
+  applyFilter: function(){
+    this.setState({
+      filtersVisible:false,
+      isLoading:true
+    });
+    this.updateMarkers(this.state.amenity,this.state.ward,this.state.filters,this.state.variables);
   },
   renderLoading: function(){
     return <Loading />

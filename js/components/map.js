@@ -13,7 +13,7 @@ import FeatureDetails from './feature_details';
 
 import styles from '../styles/styles';
 
-Mapbox.setAccessToken('');
+Mapbox.setAccessToken('pk.eyJ1IjoibmlyYWJwdWRhc2FpbmkiLCJhIjoiOVRtcWxvTSJ9.Ubh6aFZDqx9HHYU1hPxH9Q');
 
 var Map = React.createClass({
   getInitialState: function(){

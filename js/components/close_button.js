@@ -1,6 +1,10 @@
 import React from 'react';
 
-import {Text} from 'react-native';
+import {
+  Text,
+  View,
+  Button
+} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
