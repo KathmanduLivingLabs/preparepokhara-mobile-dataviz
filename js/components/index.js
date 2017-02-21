@@ -56,18 +56,32 @@ var PreparePokhara = React.createClass({
           <NavigationButton onPress={this.openDrawer}/>
           <Text style={styles.header1}>PREPARE</Text>
           <Text style={styles.header2}>POKHARA</Text>
-        </View>
+          </View>
+        <View style={styles.headermargin}><Text style={styles.header3}>{this.amenitytag()}</Text></View>
 
         <View style={styles.content}>
-          {this.state.isLoading ? this.renderLoading() : this.renderMapComponent()}
-        </View>
-        <View style={styles.footer}>
+          {this.state.isLoading ? this.renderLoading() : this.renderMapComponent()} 
+         <View style={styles.footer}>
           <FilterButton />  
           {this.state.isLoading ? <InsightsButton/> : <InsightsButton onPress={this.inshightButtonPressed}/>} 
         </View>
+        </View>
+       
 
       </View>
       </DrawerLayoutAndroid>
+  },
+  amenitytag: function(){
+    switch(this.state.amenity){
+      case 'hospital': return "HOSPITALS"
+      break;
+      case 'bank': return "BANKS"
+      break;
+      case 'school': return "SCHOOLS"
+      break;
+      default: return null;
+    }
+
   },
 
   onInshightsClosed: function(){

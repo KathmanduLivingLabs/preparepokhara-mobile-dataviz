@@ -12,12 +12,12 @@ render(){
 					<View>
 					
 						<View style={styles.insight_component}>		
-							<Text style={styles.header2}>BANKS SELECTED</Text>
+							<Text style={styles.header_insight}>BANKS SELECTED</Text>
 							{this.banks_selected()}
 						</View>
 
 						<View style={styles.insight_component}>
-							<Text style={styles.header2}>ATM COVERAGE </Text>
+							<Text style={styles.header_insight}>ATM COVERAGE </Text>
 							{this.atm_coverage()}
 				        </View>
 

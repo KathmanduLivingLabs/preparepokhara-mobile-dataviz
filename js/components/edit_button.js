@@ -1,20 +1,22 @@
 import React from 'react';
 
-import {View,Text, Button} from 'react-native';
-import styles from '../styles/styles';
+import {Text} from 'react-native';
 
+import Icon from 'react-native-vector-icons/Entypo';
+
+import styles from '../styles/styles';
 var EditButton = React.createClass({
   render: function(){
     return(
-    	<View  style={styles.edit_button}>
-		         <Button
-		          disabled
-		          onPress={this.onButtonPress}
-		          title="EDIT"
-				  color="#10A0E6"
-				  accessibilityLabel="Edit content"
-				/>
-		</View>
+    	
+			 <Icon.Button
+		      name="edit"
+		      backgroundColor="#10A0E6"
+		      size={15}
+		      onPress={this.props.onPress}
+		      style={styles.closeButton}>
+		      <Text style ={{color:'#FFFFFF', fontSize: 15, marginRight:30, marginLeft:20}}>EDIT</Text>
+		    </Icon.Button>
 
     	); 
   },

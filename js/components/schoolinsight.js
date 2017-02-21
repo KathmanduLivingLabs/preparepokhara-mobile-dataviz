@@ -12,17 +12,17 @@ render(){
 					<View>
 					
 						<View style={styles.insight_component}>		
-							<Text style={styles.header2}>SCHOOLS SELECTED</Text>
+							<Text style={styles.header_insight}>SCHOOLS SELECTED</Text>
 							{this.school_selected()}
 						</View>
 
 						<View style={styles.insight_component}>
-							<Text style={styles.header2}>STUDENTS </Text>
+							<Text style={styles.header_insight}>STUDENTS </Text>
 							{this.students()}
 				        </View>
 
 				      	<View style={styles.insight_component}>
-							<Text style={styles.header2}>PERSONNEL</Text>
+							<Text style={styles.header_insight}>PERSONNEL</Text>
 							{this.personnel()}
 						</View>
 

@@ -9,25 +9,53 @@ var styles = StyleSheet.create({
     alignItems:'stretch'
   },
   header:{
-    flex: 1,
+    flex: 0.9,
     flexDirection: 'row',
     alignItems:'center',
     borderBottomColor :"#10A0E6",
-    borderBottomWidth : 5
+    minHeight:40,
+    borderBottomWidth : 4
+  },
+  headermargin:
+  {
+    flex: 0.5,
+    flexDirection:'row',
+    alignItems:'center',
+    minHeight:20,
+    justifyContent:'center',
+    backgroundColor:"#10A0E6"
   },
   content:{
-    flex: 10
+    flex: 11,
+    opacity:0.99
+  },
+  contentfeature:{
+    flex: 12
+  },
+  footerfeature:
+  {
+    flex:1,
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+    marginLeft:40,
+    marginRight:40,
+    bottom:2
   },
   footer:{
-    flex:1,
     flexDirection: 'row',
     justifyContent:'space-around',
-    alignItems:'center'
+    backgroundColor:'transparent',
+    bottom:4,
+    position: 'absolute',
+    left:48,
+    right:48,
   },
+
   header1:
   {
     color: '#10A0E6',
-    marginLeft:15,
+    marginLeft:10,
     fontFamily:'Signika-Bold',
     fontSize:25
   },
@@ -37,11 +65,25 @@ var styles = StyleSheet.create({
     fontFamily:'Signika-Bold',
     fontSize: 25
   },
+  header_insight:
+  {
+    color:"#23769E",
+    fontFamily:'Signika-Bold',
+    fontSize: 22,
+    marginBottom:-2.5
+  },
+  header3:
+  {
+    color:'#FFFFFF',
+    fontFamily:'Signika-Bold',
+    marginTop: 0,
+    fontSize:17
+  },
   mapContainer: {
-    flex: 1
+    flex: 1,
   },
   map: {
-    flex: 1
+    flex: 1,
   },
   loadingText: {
     fontSize: 25
@@ -56,7 +98,7 @@ var styles = StyleSheet.create({
     justifyContent: 'center'
   },
   closeButton: {
-    alignSelf: 'flex-end'
+    alignItems: 'center'
   },
   content2:{
     color:"#23769E",
@@ -96,7 +138,7 @@ var styles = StyleSheet.create({
     fontFamily:'Signika-Bold',
     color: '#10A0E6',
     marginRight:15,
-    fontSize:34
+    fontSize:25
   },
   insight_maincomponent:{
     flex:10
@@ -104,27 +146,28 @@ var styles = StyleSheet.create({
 
   text_fade:{
     fontFamily:'Signika-Bold',
-    fontSize:18,
+    fontSize:15,
     color: '#B2B2B2',
     marginRight:45,
     marginTop:-8
   },
   text_atm:{
     fontFamily:'Signika-Bold',
-    fontSize:18,
+    fontSize:15,
     color:'#B2B2B2',
     marginTop:-8,
     textAlign:'justify'
   },
   text_fadebig:{
     color: '#B2B2B2',
-    fontSize:34,
+    fontSize:25,
   },
   content_insight:{
     flex:1
   },
   insight_component:{
-    marginBottom:35,
+    marginTop:10,
+    marginBottom:10,
     marginLeft:10
 
   },
@@ -140,8 +183,6 @@ var styles = StyleSheet.create({
   },
   detail_title:{
     fontFamily:'Signika-Bold',
-    borderBottomColor :"#9C8AA5",
-    borderBottomWidth : 2,
     color: '#AA0114',
     marginRight:15,
     marginLeft:15,
@@ -158,8 +199,6 @@ var styles = StyleSheet.create({
     textAlign:'auto',
     fontSize:20,
 
-  }
-
-
+  },
 });
 export default styles;

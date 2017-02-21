@@ -13,17 +13,17 @@ render(){
 					<View>
 					
 						<View style={styles.insight_component}>		
-							<Text style={styles.header2}>HOSPITALS SELECTED</Text>
+							<Text style={styles.header_insight}>HOSPITALS SELECTED</Text>
 							{this.hospital_no()}
 						</View>
 
 						<View style={styles.insight_component}>
-							<Text style={styles.header2}>BED CAPACITY </Text>
+							<Text style={styles.header_insight}>BED CAPACITY </Text>
 							{this.bed_capacity()}
 				        </View>
 
 				      	<View style={styles.insight_component}>
-							<Text style={styles.header2}>PERSONNEL</Text>
+							<Text style={styles.header_insight}>PERSONNEL</Text>
 							{this.personnel()}
 						</View>
 
