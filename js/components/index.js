@@ -5,6 +5,7 @@ import {
   Text,
   Button,
   DrawerLayoutAndroid,
+  Modal,
   View
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -15,11 +16,14 @@ import InsightsButton from './insights_button';
 import NavigationButton from './navigation_button';
 import Loading from './loading';
 import FetchData from '../api/fetch_data';
+import Insight_main from './insight';
 
-import MapView from './map'
+import MapView from './map';
 
 var PreparePokhara = React.createClass({
+
   getInitialState: function(){
+    
     return {
       isLoading: true,
       amenity: 'hospital',
@@ -27,7 +31,9 @@ var PreparePokhara = React.createClass({
       ward: '',
       variables: {},
       annotations: [],
-      attributes: []
+      attributes: [],
+      stats:{},
+      insightVisible: false,
     }
   },
   componentWillMount: function(){
@@ -43,21 +49,56 @@ var PreparePokhara = React.createClass({
       drawerWidth={280}
       drawerPosition={DrawerLayoutAndroid.positions.Left}
       renderNavigationView={() => navigationView}>
+
       <View style={styles.container}>
+         <Insight_main visible={this.state.insightVisible} onInshightsClosed={this.onInshightsClosed} amenity={this.state.amenity} insightstats={this.state.stats}/>
         <View style={styles.header}>
           <NavigationButton onPress={this.openDrawer}/>
           <Text style={styles.header1}>PREPARE</Text>
-          <Text style = {styles.header2}>POKHARA</Text>
-        </View>
+          <Text style={styles.header2}>POKHARA</Text>
+          </View>
+        <View style={styles.headermargin}><Text style={styles.header3}>{this.amenitytag()}</Text></View>
+
         <View style={styles.content}>
-          {this.state.isLoading ? this.renderLoading() : this.renderMapComponent()}
+          {this.state.isLoading ? this.renderLoading() : this.renderMapComponent()} 
+         <View style={styles.footer}>
+          <FilterButton />  
+          {this.state.isLoading ? <InsightsButton/> : <InsightsButton onPress={this.inshightButtonPressed}/>} 
         </View>
-        <View style={styles.footer}>
-          <FilterButton />
-          <InsightsButton />
         </View>
+       
+
       </View>
       </DrawerLayoutAndroid>
+  },
+  amenitytag: function(){
+    switch(this.state.amenity){
+      case 'hospital': return "HOSPITALS"
+      break;
+      case 'bank': return "BANKS"
+      break;
+      case 'school': return "SCHOOLS"
+      break;
+      default: return null;
+    }
+
+  },
+
+  onInshightsClosed: function(){
+    this.setState({
+      
+        insightVisible: false
+      
+    });
+
+  },
+  inshightButtonPressed: function(){
+    this.setState({
+      
+        insightVisible: true    
+      
+    });
+
   },
   renderLoading: function(){
     return <Loading />
@@ -88,10 +129,10 @@ var PreparePokhara = React.createClass({
     .then((data) => this.setState({
       annotations: data.annotations,
       attributes: data.attributes,
+      stats: data.stats,
       isLoading: false
     }));
   }
-
 });
 
 AppRegistry.registerComponent('PreparePokhara', () => PreparePokhara);

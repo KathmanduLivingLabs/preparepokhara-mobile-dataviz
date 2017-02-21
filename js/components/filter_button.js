@@ -9,9 +9,9 @@ var FilterButton = React.createClass({
     return <Icon.Button
       name="ios-funnel"
       backgroundColor="#10A0E6"
-      size={30}
+      size={20}
       onPress={this.filter}>
-      <Text style ={{color:'#FFFFFF', fontSize: 20, marginRight:28}}>
+      <Text style ={{color:'#FFFFFF', fontSize: 15, marginRight:28}}>
       FILTERS
       </Text>
     </Icon.Button>
