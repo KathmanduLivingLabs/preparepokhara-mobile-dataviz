@@ -10,14 +10,11 @@ var FilterButton = React.createClass({
       name="ios-funnel"
       backgroundColor="#10A0E6"
       size={30}
-      onPress={this.filter}>
+      onPress={this.props.onPress}>
       <Text style ={{color:'#FFFFFF', fontSize: 20, marginRight:28}}>
       FILTERS
       </Text>
     </Icon.Button>
-  },
-  filter: function(){
-    console.log("Filter Pressed")
   }
 });
 

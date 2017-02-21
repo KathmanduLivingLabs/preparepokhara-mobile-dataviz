@@ -17,6 +17,7 @@ import Loading from './loading';
 import FetchData from '../api/fetch_data';
 
 import MapView from './map'
+import Filters from './filter.js'
 
 var PreparePokhara = React.createClass({
   getInitialState: function(){
@@ -27,14 +28,9 @@ var PreparePokhara = React.createClass({
       ward: '',
       variables: {},
       annotations: [],
-      attributes: []
+      attributes: [],
+      filtersVisible: false
     }
-  },
-  componentWillMount: function(){
-
-  },
-  componentWillUpdate: function(){
-    //this.updateMarkers();
   },
   render: function(){
      var navigationView = <SideMenu itemSelected={this.drawerItemSelected}/>;
@@ -45,6 +41,10 @@ var PreparePokhara = React.createClass({
       renderNavigationView={() => navigationView}>
       <View style={styles.container}>
         <View style={styles.header}>
+        <Filters visible={this.state.filtersVisible}
+          onFilterApplied={this.applyFilter}
+          onFilterClose={this.onFilterClose}
+          amenity={this.state.amenity}/>
           <NavigationButton onPress={this.openDrawer}/>
           <Text style={styles.header1}>PREPARE</Text>
           <Text style = {styles.header2}>POKHARA</Text>
@@ -53,11 +53,28 @@ var PreparePokhara = React.createClass({
           {this.state.isLoading ? this.renderLoading() : this.renderMapComponent()}
         </View>
         <View style={styles.footer}>
-          <FilterButton />
+          <FilterButton onPress={this.filterButtonPressed}/>
           <InsightsButton />
         </View>
       </View>
       </DrawerLayoutAndroid>
+  },
+  filterButtonPressed: function(){
+    this.setState({
+      filtersVisible: true
+    });
+  },
+  onFilterClose: function(){
+    this.setState({
+      filtersVisible: false
+    });
+  },
+  applyFilter: function(){
+    this.setState({
+      filtersVisible:false,
+      isLoading:true
+    });
+    this.updateMarkers(this.state.amenity,this.state.ward,this.state.filters,this.state.variables);
   },
   renderLoading: function(){
     return <Loading />
@@ -91,7 +108,6 @@ var PreparePokhara = React.createClass({
       isLoading: false
     }));
   }
-
 });
 
 AppRegistry.registerComponent('PreparePokhara', () => PreparePokhara);
