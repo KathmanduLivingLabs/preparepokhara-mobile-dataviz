@@ -36,7 +36,6 @@ var prepareMapData = function(data, type){
     attributes: featureAttributes,
     stats: stats
   }
-  console.log(mapData);
   return mapData;
 }
 
@@ -87,11 +86,12 @@ var prepareStats = function(stats, type){
 }
 
 module.exports = function(amenity,ward_id,filters, variables){
+  var baseURL = 'http://api-preparepokhara.herokuapp.com/api/v1/features';
   var type = amenity;
   var ward = ward_id;
   var filters = encodeURIComponent(JSON.stringify(filters));
   var variables = encodeURIComponent(JSON.stringify(variables));
-  var url = `http://api-preparepokhara.herokuapp.com/api/v1/features?type=${type}&ward=${ward}&filters=${filters}&variables=${variables}`;
+  var url = `${baseURL}?type=${type}&ward=${ward}&filters=${filters}&variables=${variables}`;
   console.log(url);
   return fetch(url).then(function(response){
     return response.json()

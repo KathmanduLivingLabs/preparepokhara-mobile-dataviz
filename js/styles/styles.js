@@ -51,7 +51,6 @@ var styles = StyleSheet.create({
     left:48,
     right:48,
   },
-
   header1:
   {
     color: '#10A0E6',
@@ -111,7 +110,7 @@ var styles = StyleSheet.create({
   },
   switchh:{
     flexDirection: 'row',
-    justifyContent: 'flex-start' 
+    justifyContent: 'flex-start'
   },
   switch_content:{
     fontSize: 18,
@@ -134,6 +133,39 @@ var styles = StyleSheet.create({
     marginLeft:200,
     marginRight:5
   },
+  multiSliderFromToContainer: {
+    flexDirection: 'row',
+    justifyContent:'space-between',
+    marginRight:30
+  },
+  multiSliderContainer: {
+    flex: 1
+  },
+  filterContainer: {
+    flex: 1
+  },
+  controlsContainer: {
+    marginBottom: 15,
+    marginLeft: 10
+  },
+  singleControlContainer: {
+    marginBottom: 15,
+    marginLeft: 10
+  },
+  switchStyle: {
+    marginBottom: 15,
+    marginLeft: 10
+  },
+  switchContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start'
+  },
+  closeButtonContainer:{
+    flex:1,
+    justifyContent:'flex-end',
+    marginLeft:200,
+    marginRight:5
+  },
  text_highlight:{
     fontFamily:'Signika-Bold',
     color: '#10A0E6',
@@ -143,7 +175,11 @@ var styles = StyleSheet.create({
   insight_maincomponent:{
     flex:10
   },
-
+  applyFilter:{
+    flex:1,
+    marginLeft:40,
+    marginRight:40
+  },
   text_fade:{
     fontFamily:'Signika-Bold',
     fontSize:15,
